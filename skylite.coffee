@@ -3,7 +3,7 @@ class window.Skylite
   constructor: (options) ->
     @[key] = option for key, option of options
 
-    @$modal = $("<div class='modal #{options.type}'>")
+    @$modal = $("<div class='modal #{@type}'>")
     $("<h1>#{@title}</h1>").appendTo @$modal if @title?
     $("<p>#{@body}</p>").appendTo @$modal if @body?
     @$actions = $("<div class='actions'>")
@@ -13,7 +13,7 @@ class window.Skylite
       $.each @actions, (text, action) =>
         $("<button>")
           .text(text)
-          .addClass(text.toLowerCase().replace(/[a-z]/g,''))
+          .addClass(text.toLowerCase().replace(/[^a-z]/g,''))
           .click(=> action(@); @dismiss())
           .appendTo @$actions
     else
