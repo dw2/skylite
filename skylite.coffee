@@ -25,12 +25,15 @@ class window.Skylite
 
     # Add a hotkey to auto-click the last action on press(enter) on a delay
     setTimeout =>
-      $(document).on 'keypress', (e) =>
+      $(document).on 'keyup', (e) =>
         return unless @$modal.is ':last-of-type'
         key = e.keyCode ? e.which
-        return unless key is 13
-        @$actions.find('button:last').trigger 'click'
-        $(document).off 'keypress', false, @keypress
+        if key is 13 # Enter
+          @$actions.find('button:last').trigger 'click'
+          $(document).off 'keypress', false, @keypress
+        if key is 27 # Esc
+          @dismiss()
+          $(document).off 'keypress', false, @keypress
       , @keypress
     , 500
 
