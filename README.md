@@ -43,7 +43,9 @@ You can add as many modals as your heart desires (or until your browser crashes)
   new Skylite options
 ```
 
-## Add as many buttons as you want
+## Add as many buttons as you want.
+
+Hash heys become the inner text of the `<button>` elements.
 
 ```
   options =
@@ -56,8 +58,7 @@ You can add as many modals as your heart desires (or until your browser crashes)
       pear: -> console.log 'Pear clicked'
       orange: -> console.log 'Orange clicked'
 
-  modal = new Skylite options
-  setTimeout (-> modal.dismiss()), 5000
+  new Skylite options
 ```
 
 ## Auto-dismiss Modals
@@ -73,6 +74,45 @@ You can add as many modals as your heart desires (or until your browser crashes)
   modal = new Skylite options
   setTimeout (-> modal.dismiss()), 5000
 
+```
+
+## Pass the modal into your callback
+
+This can be useful if you're creating a prompt for user input.
+
+```
+  options =
+    title: "Introspective"
+    body: "Click and then have your way with me."
+    actions:
+      something: (modal) -> console.log modal, 'just got clicked'
+
+  new Skylite options
+```
+
+## Pass in jQuery CSS and Animation hashes
+
+Note: Put as much, if not all, of your CSS into your CSS/Sass/Stylus files.
+It's just good practice. Breaking convention here for the sake of the example:
+
+```
+  options =
+    title: "Modal Title"
+    body: "Something profound should go here."
+    cssIn:
+      background: '#ccc'
+      height: 140
+      left: '50%'
+      margin: '-100px 0 0 -200px'
+      opacity: 0
+      padding: 30
+      position: 'fixed'
+      top: '40%'
+      width: 340
+    animIn: [{top: '50%', opacity: 1}, 200]
+    animOut: [opacity: 0]
+
+  new Skylite options
 ```
 
 ---

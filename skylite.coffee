@@ -3,7 +3,7 @@ class window.Skylite
   constructor: (options) ->
     @[key] = option for key, option of options
 
-    @$modal = $("<div class='modal #{@type}'>")
+    @$modal = $("<div class='modal #{@type ? ''}'>")
     $("<h1>#{@title}</h1>").appendTo @$modal if @title?
     $("<p>#{@body}</p>").appendTo @$modal if @body?
     @$actions = $("<div class='actions'>")
@@ -55,15 +55,19 @@ class window.Skylite
 
   render: ->
     @mask()
-    @$modal
-      .css(opacity: 0, marginLeft: -@width)
-      .appendTo('body')
-      .animate {opacity: 1, marginLeft: Math.round(@width/-2)}, 200
+    @$modal.css @cssIn if @cssIn?
+    @$modal.appendTo('body')
+    @$modal.animate @animIn[0], (@animIn[1] ? 400) if @animIn?
 
   dismiss: ->
     @unmask() if $('body > .modal').length is 1
-    @$modal.animate {marginTop: 0, opacity: 0}, 300, =>
+    done = =>
       if @callback?
         $modal = @$modal
         @callback()
       @$modal.remove()
+    @$modal.css @cssOut if @cssOut?
+    if @animOut?
+      @$modal.animate @animOut[0], (@animOut[1] ? 400), done
+    else
+      done()
