@@ -1,3 +1,10 @@
+# skylite.js
+
+# (c) 2010-2012 Douglas Waltman II, DigitalAugment Inc.
+# Skylite may be freely distributed under the MIT license.
+# For all details and documentation:
+# http://github.com/dw2/skylite
+
 class window.Skylite
 
   constructor: (options) ->
