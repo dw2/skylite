@@ -68,7 +68,7 @@ http://github.com/dw2/skylite
       } else if ($('#mask').length === 0) {
         $('body').append('<div id="mask"></div>');
       }
-      return $('#mask, .wmd-prompt-background').css({
+      return $('#mask, .wmd-prompt-background').stop(true).css({
         opacity: 0
       }).animate({
         opacity: .7
@@ -78,6 +78,9 @@ http://github.com/dw2/skylite
     };
 
     Skylite.prototype.unmask = function() {
+      if ($('body > .modal').length > 1) {
+        return;
+      }
       return $('#mask, .wmd-prompt-background').stop(true).fadeTo(200, 0, function() {
         return $(this).remove();
       });
