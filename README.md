@@ -1,6 +1,6 @@
 # Skylite
 
-Skylite is a framework for creating modal boxes in your browser application. It is written in CoffeeScript and utilized jQuery.
+Skylite is a framework for creating modal boxes in your browser application. It is written in CoffeeScript and utilizes jQuery.
 
 Unlike a lot of other modal scripts, the view work is up to you here. This script will dump `<div id="mask">` and multiple `<div class="modal">` blocks to `<body>`.
 
@@ -28,34 +28,34 @@ You can add as many modals as your heart desires (or until your browser crashes)
 ### A Basic Alert Box
 
 ```
-  options =
+options =
     body: "This is a message from your browser overlord."
 
-  new Skylite options
+new Skylite options
 ```
 
 ### The same alert box with a title and a callback function
 
 ```
-  options =
+options =
     title: "My Modal"
     body: "This is a message from your browser overlord."
     callback: -> console.log 'The modal is dead.'
 
-  new Skylite options
+new Skylite options
 ```
 
 ### A Confirmation Box
 
 ```
-  options =
+options =
     title: "Are you sure?"
     body: "The sky will fall on your head."
     actions:
-      cancel: -> console.log 'Cancel clicked'
-      continue: -> console.log 'Continue clicked'
+        cancel: -> console.log 'Cancel clicked'
+        continue: -> console.log 'Continue clicked'
 
-  new Skylite options
+new Skylite options
 ```
 
 ### Add as many buttons as you want.
@@ -63,31 +63,31 @@ You can add as many modals as your heart desires (or until your browser crashes)
 Hash heys become the inner text of the `<button>` elements.
 
 ```
-  options =
+options =
     title: "Select One"
     body: "Make up your mind already."
     actions:
-      apple: -> console.log 'Apple clicked'
-      banana: -> console.log 'Banana clicked'
-      grape: -> console.log 'Grape clicked'
-      pear: -> console.log 'Pear clicked'
-      orange: -> console.log 'Orange clicked'
+        apple: -> console.log 'Apple clicked'
+        banana: -> console.log 'Banana clicked'
+        grape: -> console.log 'Grape clicked'
+        pear: -> console.log 'Pear clicked'
+        orange: -> console.log 'Orange clicked'
 
-  new Skylite options
+new Skylite options
 ```
 
 ### Auto-dismiss Modals
 
 ```
-  options =
+options =
     title: "Dismiss me remotely"
     body: "Click me, or I will disappear in 5 seconds."
     actions:
-      cancel: -> console.log 'Cancel clicked'
-      continue: -> console.log 'Continue clicked'
+        cancel: -> console.log 'Cancel clicked'
+        continue: -> console.log 'Continue clicked'
 
-  modal = new Skylite options
-  setTimeout (-> modal.dismiss()), 5000
+modal = new Skylite options
+setTimeout (-> modal.dismiss()), 5000
 
 ```
 
@@ -96,13 +96,13 @@ Hash heys become the inner text of the `<button>` elements.
 This can be useful if you're creating a prompt for user input.
 
 ```
-  options =
+options =
     title: "Introspective"
     body: "Click and then have your way with me."
     actions:
-      something: (modal) -> console.log modal, 'just got clicked'
+        something: (modal) -> console.log modal, 'just got clicked'
 
-  new Skylite options
+new Skylite options
 ```
 
 ### Pass in jQuery CSS and Animation hashes
@@ -111,23 +111,23 @@ Note: Put as much, if not all, of your CSS into your CSS/Sass/Stylus files.
 It's just good practice. Breaking convention here for the sake of the example:
 
 ```
-  options =
+options =
     title: "Modal Title"
     body: "Something profound should go here."
     cssIn:
-      background: '#ccc'
-      height: 140
-      left: '50%'
-      margin: '-100px 0 0 -200px'
-      opacity: 0
-      padding: 30
-      position: 'fixed'
-      top: '40%'
-      width: 340
+        background: '#ccc'
+        height: 140
+        left: '50%'
+        margin: '-100px 0 0 -200px'
+        opacity: 0
+        padding: 30
+        position: 'fixed'
+        top: '40%'
+        width: 340
     animIn: [{top: '50%', opacity: 1}, 200]
     animOut: [opacity: 0]
 
-  new Skylite options
+new Skylite options
 ```
 
 ---
