@@ -1,4 +1,4 @@
-###
+###!
 skylite.js
 
 (c) 2010-2012 Douglas Waltman II, DigitalAugment Inc.
