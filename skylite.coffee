@@ -23,7 +23,7 @@ class window.Skylite
                 $("<button>")
                     .text(text)
                     .addClass(text.toLowerCase().replace(/[^a-z]/g,''))
-                    .click(=> action(@); @dismiss())
+                    .click(=> if action(@) then @dismiss())
                     .appendTo @$actions
         else
             $("<button>")

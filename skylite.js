@@ -32,8 +32,9 @@ http://github.com/dw2/skylite
       if (this.actions != null) {
         $.each(this.actions, function(text, action) {
           return $("<button>").text(text).addClass(text.toLowerCase().replace(/[^a-z]/g, '')).click(function() {
-            action(_this);
-            return _this.dismiss();
+            if (action(_this)) {
+              return _this.dismiss();
+            }
           }).appendTo(_this.$actions);
         });
       } else {
