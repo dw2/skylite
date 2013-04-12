@@ -28,6 +28,9 @@ http://github.com/dw2/skylite
       if (this.body != null) {
         $("<p>" + this.body + "</p>").appendTo(this.$modal);
       }
+      if (this.html != null) {
+        $(this.html).appendTo(this.$modal);
+      }
       this.$actions = $("<div class='actions'>");
       if (this.actions != null) {
         $.each(this.actions, function(text, action) {

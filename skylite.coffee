@@ -15,6 +15,7 @@ class window.Skylite
         @$modal = $("<div class='modal #{@type ? ''}'>")
         $("<h1>#{@title}</h1>").appendTo @$modal if @title?
         $("<p>#{@body}</p>").appendTo @$modal if @body?
+        $(@html).appendTo @$modal if @html?
         @$actions = $("<div class='actions'>")
 
         # Add action butons
