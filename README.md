@@ -134,7 +134,7 @@ new Skylite options
 
 ## License
 
-(c) 2010-2012 Douglas Waltman II, DigitalAugment Inc.
+(c) 2012-2013 Douglas Waltman II, DigitalAugment Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
