@@ -28,8 +28,7 @@ You can add as many modals as your heart desires (or until your browser crashes)
 ### A Basic Alert Box
 
 ```
-options =
-    body: "This is a message from your browser overlord."
+options = body: "This is a message from your browser overlord."
 
 new Skylite options
 ```
@@ -60,7 +59,7 @@ new Skylite options
 
 ### Add as many buttons as you want.
 
-Hash heys become the inner text of the `<button>` elements.
+Object heys become the inner text of the `<button>` elements.
 
 ```
 options =
@@ -105,7 +104,7 @@ options =
 new Skylite options
 ```
 
-### Pass in jQuery CSS and Animation hashes
+### Pass in jQuery CSS and Animation objects
 
 Note: Put as much, if not all, of your CSS into your CSS/Sass/Stylus files.
 It's just good practice. Breaking convention here for the sake of the example:
