@@ -58,7 +58,7 @@ class window.Skylite
         $('#mask, .wmd-prompt-background')
             .stop(true)
             .css(opacity: 0)
-            .animate({ opacity: .7 }, 400, 'linear')
+            .animate({ opacity: 1 }, 400, 'linear')
             .click (-> $('body > .modal, .wmd-prompt-dialog').find('.cancel').trigger 'click')
 
     unmask: ->

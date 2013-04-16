@@ -75,7 +75,7 @@ http://github.com/dw2/skylite
       return $('#mask, .wmd-prompt-background').stop(true).css({
         opacity: 0
       }).animate({
-        opacity: .7
+        opacity: 1
       }, 400, 'linear').click((function() {
         return $('body > .modal, .wmd-prompt-dialog').find('.cancel').trigger('click');
       }));
