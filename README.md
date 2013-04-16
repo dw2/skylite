@@ -59,7 +59,7 @@ new Skylite options
 
 ### Add as many buttons as you want.
 
-Object heys become the inner text of the `<button>` elements.
+Object keys become the inner text of the `<button>` elements.
 
 ```
 options =
