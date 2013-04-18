@@ -21,7 +21,7 @@ http://github.com/dw2/skylite
         option = options[key];
         this[key] = option;
       }
-      this.$modal = $("<div class='modal " + ((_ref = this.type) != null ? _ref : '') + "'>");
+      this.$modal = $("<div class='modal active " + ((_ref = this.type) != null ? _ref : '') + "'>");
       if (this.title != null) {
         $("<h1>" + this.title + "</h1>").appendTo(this.$modal);
       }
@@ -74,11 +74,13 @@ http://github.com/dw2/skylite
         $('body').append('<div id="mask"></div>');
       }
       this.$mask = $('#mask, .wmd-prompt-background');
-      this.$mask.stop(true).css({
-        opacity: 0
-      }).animate({
-        opacity: 1
-      }, 400, 'linear');
+      if (!$('.modal').length) {
+        this.$mask.stop(true).css({
+          opacity: 0
+        }).animate({
+          opacity: 1
+        }, 400, 'linear');
+      }
       return this.$mask.click(function() {
         if (!_this.lockMask) {
           return _this.dismiss();
@@ -98,6 +100,7 @@ http://github.com/dw2/skylite
     Skylite.prototype.render = function() {
       var _ref;
       this.mask();
+      $('.modal').removeClass('active');
       if (this.cssIn != null) {
         this.$modal.css(this.cssIn);
       }
@@ -114,12 +117,18 @@ http://github.com/dw2/skylite
         this.unmask();
       }
       done = function() {
-        var $modal;
+        var $modal, $modals;
         if (_this.callback != null) {
           $modal = _this.$modal;
           _this.callback();
         }
-        return _this.$modal.remove();
+        _this.$modal.remove();
+        $modals = $('.modal');
+        if ($modals.length) {
+          return $modals.last().addClass('active');
+        } else {
+          return _this.unmask();
+        }
       };
       if (this.cssOut != null) {
         this.$modal.css(this.cssOut);

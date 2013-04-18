@@ -4,7 +4,7 @@ Skylite is a framework for creating modal boxes in your browser application. It 
 
 Unlike a lot of other modal scripts, the view work is up to you here. This script will dump `<div id="mask">` and multiple `<div class="modal">` blocks to `<body>`.
 
-You can add as many modals as your heart desires (or until your browser crashes). I like to use the `:last-of-type` pseudo-selector to show only the last `<div class="modal">`.
+You can add as many modals as your heart desires (or until your browser crashes). The most recently loaded modal will have a class name of "active" so that you can easily hide inactive modals with CSS.
 
 ---
 

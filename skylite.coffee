@@ -12,7 +12,7 @@ class window.Skylite
     constructor: (options) ->
         @[key] = option for key, option of options
 
-        @$modal = $("<div class='modal #{@type ? ''}'>")
+        @$modal = $("<div class='modal active #{@type ? ''}'>")
         $("<h1>#{@title}</h1>").appendTo @$modal if @title?
         $("<p>#{@body}</p>").appendTo @$modal if @body?
         $(@html).appendTo @$modal if @html?
@@ -56,18 +56,20 @@ class window.Skylite
         else if $('#mask').length is 0
             $('body').append('<div id="mask"></div>')
         @$mask = $('#mask, .wmd-prompt-background')
-        @$mask
-            .stop(true)
-            .css(opacity: 0)
-            .animate({ opacity: 1 }, 400, 'linear')
+        unless $('.modal').length
+            @$mask
+                .stop(true)
+                .css(opacity: 0)
+                .animate { opacity: 1 }, 400, 'linear'
         @$mask.click => @dismiss() unless !!@lockMask
 
     unmask: ->
-        return if $('body > .modal').length    > 1
+        return if $('body > .modal').length > 1
         $('#mask, .wmd-prompt-background').stop(true).fadeTo 200, 0, -> $(@).remove()
 
     render: ->
         @mask()
+        $('.modal').removeClass 'active'
         @$modal.css @cssIn if @cssIn?
         @$modal.appendTo('body')
         @$modal.animate @animIn[0], (@animIn[1] ? 400) if @animIn?
@@ -79,6 +81,11 @@ class window.Skylite
                 $modal = @$modal
                 @callback()
             @$modal.remove()
+            $modals = $('.modal')
+            if $modals.length
+                $modals.last().addClass 'active'
+            else
+                @unmask()
         @$modal.css @cssOut if @cssOut?
         if @animOut?
             @$modal.animate @animOut[0], (@animOut[1] ? 400), done
