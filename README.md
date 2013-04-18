@@ -14,6 +14,7 @@ You can add as many modals as your heart desires (or until your browser crashes)
 * **body:** (string) Adds html content to the modal.
 * **callback:** (function) Fired right before the modal is removed form the DOM, after optional animations.
 * **actions:** (hash of functions) Each key is a button name added to a `<div>` with the class "actions", and each value is a function.
+* **lockMask:** (boolean) By default, clicking the mask will dismiss the modal. Setting this option to true will prevent that behavior.
 * **cssIn:** (hash) CSS properties set to the modal before it is added to the DOM.
 * **cssOut:** (hash) CSS properties applied to the modal before exit animation and/or removal of the modal.
 * **animIn:** (array) The first vlaue is required and is a hash of CSS properties. The second value is the optional duration of the animation. Applied just after the modal is addded to the DOM.

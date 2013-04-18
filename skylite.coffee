@@ -55,11 +55,12 @@ class window.Skylite
             $('#mask').remove()
         else if $('#mask').length is 0
             $('body').append('<div id="mask"></div>')
-        $('#mask, .wmd-prompt-background')
+        @$mask = $('#mask, .wmd-prompt-background')
+        @$mask
             .stop(true)
             .css(opacity: 0)
             .animate({ opacity: 1 }, 400, 'linear')
-            .click (-> $('body > .modal, .wmd-prompt-dialog').find('.cancel').trigger 'click')
+        @$mask.click => @dismiss() unless !!@lockMask
 
     unmask: ->
         return if $('body > .modal').length    > 1
