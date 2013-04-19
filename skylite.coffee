@@ -48,7 +48,7 @@ class window.Skylite
         , 500
 
         @$actions.appendTo @$modal
-        @render()
+        return @render()
 
     mask: ->
         if $('.wmd-prompt-background').length
@@ -73,6 +73,7 @@ class window.Skylite
         @$modal.css @cssIn if @cssIn?
         @$modal.appendTo('body')
         @$modal.animate @animIn[0], (@animIn[1] ? 400) if @animIn?
+        return @$modal
 
     dismiss: ->
         @unmask() if $('body > .modal').length is 1

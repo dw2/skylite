@@ -63,7 +63,7 @@ http://github.com/dw2/skylite
         }, _this.keypress);
       }, 500);
       this.$actions.appendTo(this.$modal);
-      this.render();
+      return this.render();
     }
 
     Skylite.prototype.mask = function() {
@@ -106,8 +106,9 @@ http://github.com/dw2/skylite
       }
       this.$modal.appendTo('body');
       if (this.animIn != null) {
-        return this.$modal.animate(this.animIn[0], (_ref = this.animIn[1]) != null ? _ref : 400);
+        this.$modal.animate(this.animIn[0], (_ref = this.animIn[1]) != null ? _ref : 400);
       }
+      return this.$modal;
     };
 
     Skylite.prototype.dismiss = function() {
