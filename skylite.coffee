@@ -68,7 +68,7 @@ class window.Skylite
         $('#mask, .wmd-prompt-background').stop(true).fadeTo 200, 0, -> $(@).remove()
 
     render: ->
-        @mask()
+        @mask() unless !!@hideMask
         $('.modal').removeClass 'active'
         @$modal.css @cssIn if @cssIn?
         @$modal.appendTo('body')
