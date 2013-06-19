@@ -111,6 +111,7 @@ http://github.com/dw2/skylite
       if (this.animIn != null) {
         this.$modal.animate(this.animIn[0], (_ref = this.animIn[1]) != null ? _ref : 400);
       }
+      this.$modal.modal = this;
       return this.$modal;
     };
 
