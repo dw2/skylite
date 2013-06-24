@@ -41,7 +41,7 @@ class window.Skylite
                 if key is 13 # Enter
                     @$actions.find('button:last').trigger 'click'
                     $(document).off 'keypress', false, @keypress
-                if key is 27 # Esc
+                if key is 27 and !@lockMask # Esc
                     @dismiss()
                     $(document).off 'keypress', false, @keypress
             , @keypress
