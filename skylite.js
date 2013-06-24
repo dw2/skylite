@@ -55,7 +55,7 @@ http://github.com/dw2/skylite
             _this.$actions.find('button:last').trigger('click');
             $(document).off('keypress', false, _this.keypress);
           }
-          if (key === 27) {
+          if (key === 27 && !_this.lockMask) {
             _this.dismiss();
             return $(document).off('keypress', false, _this.keypress);
           }
