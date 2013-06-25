@@ -51,7 +51,7 @@ http://github.com/dw2/skylite
             return;
           }
           key = (_ref1 = e.keyCode) != null ? _ref1 : e.which;
-          if (key === 13) {
+          if (key === 13 && _this.$modal.find('form').length === 0) {
             _this.$actions.find('button:last').trigger('click');
             $(document).off('keypress', false, _this.keypress);
           }
