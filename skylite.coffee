@@ -53,11 +53,9 @@ class window.Skylite
         return @render()
 
     mask: ->
-        if $('.wmd-prompt-background').length
-            $('#mask').remove()
-        else if $('#mask').length is 0
-            $('body').append('<div id="mask"></div>')
-        @$mask = $('#mask, .wmd-prompt-background')
+        unless $('#mask').length
+            $('body').addClass('hasMask').append '<div id="mask"></div>'
+        @$mask = $('#mask')
         unless $('.modal').length
             @$mask
                 .stop(true)
@@ -67,13 +65,15 @@ class window.Skylite
 
     unmask: ->
         return if $('body > .modal').length > 1
-        $('#mask, .wmd-prompt-background').stop(true).fadeTo 200, 0, -> $(@).remove()
+        $('#mask').stop(true).fadeTo 200, 0, ->
+            $(@).remove()
+            $('body').removeClass 'hasMask'
 
     render: ->
         @mask() unless !!@hideMask
         $('.modal').removeClass 'active'
         @$modal.css @cssIn if @cssIn?
-        @$modal.appendTo('body')
+        @$modal.appendTo 'body'
         @$modal.animate @animIn[0], (@animIn[1] ? 400) if @animIn?
         @$modal.modal = @
         return @$modal

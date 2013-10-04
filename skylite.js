@@ -68,12 +68,10 @@ http://github.com/dw2/skylite
     Skylite.prototype.mask = function() {
       var _this = this;
 
-      if ($('.wmd-prompt-background').length) {
-        $('#mask').remove();
-      } else if ($('#mask').length === 0) {
-        $('body').append('<div id="mask"></div>');
+      if (!$('#mask').length) {
+        $('body').addClass('hasMask').append('<div id="mask"></div>');
       }
-      this.$mask = $('#mask, .wmd-prompt-background');
+      this.$mask = $('#mask');
       if (!$('.modal').length) {
         this.$mask.stop(true).css({
           opacity: 0
@@ -92,8 +90,9 @@ http://github.com/dw2/skylite
       if ($('body > .modal').length > 1) {
         return;
       }
-      return $('#mask, .wmd-prompt-background').stop(true).fadeTo(200, 0, function() {
-        return $(this).remove();
+      return $('#mask').stop(true).fadeTo(200, 0, function() {
+        $(this).remove();
+        return $('body').removeClass('hasMask');
       });
     };
 
