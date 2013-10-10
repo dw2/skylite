@@ -135,7 +135,7 @@ new Skylite options
 
 ---
 
-## License
+## MIT License
 
 (c) 2012-2013 Douglas Waltman II, DigitalAugment Inc.
 
