@@ -14,6 +14,7 @@ You can add as many modals as your heart desires (or until your browser crashes)
 * **body:** (string) Adds content to the modal within a `<p>`.
 * **html:** (string) Adds html content to the modal. Use this if you want something beyond a basic title/body modal.
 * **type** (string) For now, this assigns class names to the modal's `<div>` wrapper. In a future release, this may include custom behavior.
+* **ready:** (function) Fired right after the modal is added to the DOM.
 * **callback:** (function) Fired right before the modal is removed form the DOM, after optional animations.
 * **actions:** (hash of functions) Each key is a button name added to a `<div>` with the class "actions", and each value is a function.
 * **lockMask:** (boolean) By default, clicking the mask will dismiss the modal. Setting this option to true will prevent that behavior.

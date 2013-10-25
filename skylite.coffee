@@ -76,6 +76,7 @@ class window.Skylite
         @$modal.appendTo 'body'
         @$modal.animate @animIn[0], (@animIn[1] ? 400) if @animIn?
         @$modal.modal = @
+        @ready() if @ready?
         return @$modal
 
     dismiss: ->
