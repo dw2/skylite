@@ -7,6 +7,8 @@ Skylite may be freely distributed under the MIT license.
 http://github.com/dw2/skylite
 ###
 
+jQuery.fn.modal = -> @get(0).modal
+
 class window.Skylite
 
     constructor: (options) ->
@@ -74,8 +76,9 @@ class window.Skylite
         @setActive()
         @$modal.css @cssIn if @cssIn?
         @$modal.appendTo 'body'
-        @$modal.animate @animIn[0], (@animIn[1] ? 400) if @animIn?
         @$modal.modal = @
+        @$modal.get(0).modal = @
+        @$modal.animate @animIn[0], (@animIn[1] ? 400) if @animIn?
         @ready() if @ready?
         return @$modal
 
@@ -90,11 +93,12 @@ class window.Skylite
                 $modal = @$modal
                 @callback()
             @$modal.remove()
-            $modals = $('.modal')
+            $modals = $('body > .modal:not(.dismissed)')
             if $modals.length
-                $modals.last().modal.setActive()
+                $modals.last().modal().setActive()
             else
                 @unmask()
+        @$modal.addClass 'dismissed'
         @$modal.css @cssOut if @cssOut?
         if @animOut?
             @$modal.animate @animOut[0], (@animOut[1] ? 400), done

@@ -10,6 +10,10 @@ http://github.com/dw2/skylite
 
 
 (function() {
+  jQuery.fn.modal = function() {
+    return this.get(0).modal;
+  };
+
   window.Skylite = (function() {
     function Skylite(options) {
       var key, option, _ref,
@@ -107,10 +111,11 @@ http://github.com/dw2/skylite
         this.$modal.css(this.cssIn);
       }
       this.$modal.appendTo('body');
+      this.$modal.modal = this;
+      this.$modal.get(0).modal = this;
       if (this.animIn != null) {
         this.$modal.animate(this.animIn[0], (_ref = this.animIn[1]) != null ? _ref : 400);
       }
-      this.$modal.modal = this;
       if (this.ready != null) {
         this.ready();
       }
@@ -137,13 +142,14 @@ http://github.com/dw2/skylite
           _this.callback();
         }
         _this.$modal.remove();
-        $modals = $('.modal');
+        $modals = $('body > .modal:not(.dismissed)');
         if ($modals.length) {
-          return $modals.last().modal.setActive();
+          return $modals.last().modal().setActive();
         } else {
           return _this.unmask();
         }
       };
+      this.$modal.addClass('dismissed');
       if (this.cssOut != null) {
         this.$modal.css(this.cssOut);
       }
