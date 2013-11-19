@@ -19,7 +19,7 @@ http://github.com/dw2/skylite
         option = options[key];
         this[key] = option;
       }
-      this.$modal = $("<div class='modal active " + ((_ref = this.type) != null ? _ref : '') + "'>");
+      this.$modal = $("<div class='modal " + ((_ref = this.type) != null ? _ref : '') + "'>");
       if (this.title != null) {
         $("<h1>" + this.title + "</h1>").appendTo(this.$modal);
       }
@@ -102,7 +102,7 @@ http://github.com/dw2/skylite
       if (!this.hideMask) {
         this.mask();
       }
-      $('.modal').removeClass('active');
+      this.setActive();
       if (this.cssIn != null) {
         this.$modal.css(this.cssIn);
       }
@@ -115,6 +115,11 @@ http://github.com/dw2/skylite
         this.ready();
       }
       return this.$modal;
+    };
+
+    Skylite.prototype.setActive = function() {
+      $('.modal').removeClass('active');
+      return this.$modal.addClass('active');
     };
 
     Skylite.prototype.dismiss = function() {
@@ -134,7 +139,7 @@ http://github.com/dw2/skylite
         _this.$modal.remove();
         $modals = $('.modal');
         if ($modals.length) {
-          return $modals.last().addClass('active');
+          return $modals.last().modal.setActive();
         } else {
           return _this.unmask();
         }

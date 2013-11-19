@@ -12,7 +12,7 @@ class window.Skylite
     constructor: (options) ->
         @[key] = option for key, option of options
 
-        @$modal = $("<div class='modal active #{@type ? ''}'>")
+        @$modal = $("<div class='modal #{@type ? ''}'>")
         $("<h1>#{@title}</h1>").appendTo @$modal if @title?
         $("<p>#{@body}</p>").appendTo @$modal if @body?
         $(@html).appendTo @$modal if @html?
@@ -71,13 +71,17 @@ class window.Skylite
 
     render: ->
         @mask() unless !!@hideMask
-        $('.modal').removeClass 'active'
+        @setActive()
         @$modal.css @cssIn if @cssIn?
         @$modal.appendTo 'body'
         @$modal.animate @animIn[0], (@animIn[1] ? 400) if @animIn?
         @$modal.modal = @
         @ready() if @ready?
         return @$modal
+
+    setActive: ->
+        $('.modal').removeClass 'active'
+        @$modal.addClass 'active'
 
     dismiss: ->
         @unmask() if $('body > .modal').length is 1
@@ -88,7 +92,7 @@ class window.Skylite
             @$modal.remove()
             $modals = $('.modal')
             if $modals.length
-                $modals.last().addClass 'active'
+                $modals.last().modal.setActive()
             else
                 @unmask()
         @$modal.css @cssOut if @cssOut?
