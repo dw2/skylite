@@ -55,16 +55,12 @@ http://github.com/dw2/skylite
             return;
           }
           key = (_ref1 = e.keyCode) != null ? _ref1 : e.which;
-          if (key === 13 && _this.$modal.find('form').length === 0) {
-            _this.$actions.find('button:last').trigger('click');
-            $(document).off('keypress', false, _this.keypress);
-          }
           if (key === 27 && !_this.lockMask) {
             _this.dismiss();
             return $(document).off('keypress', false, _this.keypress);
           }
         }, _this.keypress);
-      }, 500);
+      }, 300);
       this.$actions.appendTo(this.$modal);
       return this.render();
     }

@@ -40,16 +40,11 @@ class window.Skylite
             $(document).on 'keyup', (e) =>
                 return unless @$modal.is ':last-of-type'
                 key = e.keyCode ? e.which
-                # Enter
-                if key is 13 and @$modal.find('form').length is 0
-                    @$actions.find('button:last').trigger 'click'
-                    $(document).off 'keypress', false, @keypress
-                # Escape
                 if key is 27 and !@lockMask
                     @dismiss()
                     $(document).off 'keypress', false, @keypress
             , @keypress
-        , 500
+        , 300
 
         @$actions.appendTo @$modal
         return @render()
