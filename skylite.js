@@ -131,7 +131,7 @@ http://github.com/dw2/skylite
         this.unmask();
       }
       done = function() {
-        var $modal, $modals;
+        var $modal, $modals, error;
 
         if (_this.callback != null) {
           $modal = _this.$modal;
@@ -140,7 +140,12 @@ http://github.com/dw2/skylite
         _this.$modal.remove();
         $modals = $('body > .modal:not(.dismissed)');
         if ($modals.length) {
-          return $modals.last().modal().setActive();
+          try {
+            return $modals.last().modal().setActive();
+          } catch (_error) {
+            error = _error;
+            return $modals.last().addClass('active');
+          }
         } else {
           return _this.unmask();
         }

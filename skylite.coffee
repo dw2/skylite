@@ -90,7 +90,9 @@ class window.Skylite
             @$modal.remove()
             $modals = $('body > .modal:not(.dismissed)')
             if $modals.length
-                $modals.last().modal().setActive()
+                try $modals.last().modal().setActive()
+                catch error
+                    $modals.last().addClass 'active'
             else
                 @unmask()
         @$modal.addClass 'dismissed'
