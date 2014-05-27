@@ -74,7 +74,7 @@ class window.Skylite
         @$modal.modal = @
         @$modal.get(0).modal = @
         @$modal.animate @animIn[0], (@animIn[1] ? 400) if @animIn?
-        @ready() if @ready?
+        @ready(@$modal) if @ready?
         return @$modal
 
     setActive: ->
