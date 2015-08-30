@@ -21,7 +21,7 @@ http://github.com/dw2/skylite
         option = options[key];
         this[key] = option;
       }
-      this.$modal = $("<div class='modal " + ((_ref = this.type) != null ? _ref : '') + "'>");
+      this.$modal = $("<div class='modal " + ((_ref = this.type) != null ? _ref : '') + "'>").first();
       if (this.title != null) {
         $("<h1>" + this.title + "</h1>").appendTo(this.$modal);
       }

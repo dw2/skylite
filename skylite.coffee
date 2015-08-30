@@ -14,7 +14,7 @@ class window.Skylite
     constructor: (options) ->
         @[key] = option for key, option of options
 
-        @$modal = $("<div class='modal #{@type ? ''}'>")
+        @$modal = $("<div class='modal #{@type ? ''}'>").first()
         $("<h1>#{@title}</h1>").appendTo @$modal if @title?
         $("<p>#{@body}</p>").appendTo @$modal if @body?
         $(@html).appendTo @$modal if @html?
