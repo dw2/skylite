@@ -125,9 +125,12 @@ http://github.com/dw2/skylite
       return this.$modal.addClass('active');
     };
 
-    Skylite.prototype.dismiss = function() {
+    Skylite.prototype.dismiss = function(keepMask) {
       var done, _ref;
-      if ($('body > .modal').length === 1) {
+      if (typeof keepMask === 'undefined') {
+        keepMask = $('body > .modal').length > 1;
+      }
+      if (!keepMask) {
         this.unmask();
       }
       done = (function(_this) {

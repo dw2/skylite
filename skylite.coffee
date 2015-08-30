@@ -81,8 +81,10 @@ class window.Skylite
         $('.modal').removeClass 'active'
         @$modal.addClass 'active'
 
-    dismiss: ->
-        @unmask() if $('body > .modal').length is 1
+    dismiss: (keepMask) ->
+        if typeof(keepMask) is 'undefined'
+            keepMask = $('body > .modal').length > 1
+        @unmask() unless keepMask
         done = =>
             if @callback?
                 $modal = @$modal
